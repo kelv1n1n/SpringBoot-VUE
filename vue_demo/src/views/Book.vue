@@ -10,7 +10,7 @@
       </thead>
       <tbody>
           <!-- {{msg}} -->
-        <tr v-for="item in books" v-bind:key="item">
+        <tr v-for="(item,index) in books" v-bind:key="index">
           <!-- <td>{{books[0].id}}</td>
           <td>{{books[0].name}}</td>
           <td>{{books[0].author}}</td> -->
@@ -47,6 +47,13 @@ export default {
                 }
             ]
         }
+    },
+    created(){
+      const _this = this
+      axios.get('http://localhost:8090/book/findAll').then(function(res){
+        console.log(res)
+        _this.books = res.data
+      })
     }
 };
 </script>
