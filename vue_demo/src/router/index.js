@@ -3,24 +3,52 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Book from '../views/Book.vue'
 
+import App from '../App'
+import PageOne from '../views/PageOne'
+import PageTwo from '../views/PageTwo'
+import PageThree from '../views/PageThree'
+import PageFour from '../views/PageFour'
+
 Vue.use(VueRouter)
 
 const routes = [
+  // {
+  //   path:'/book',
+  //   component:Book
+  // },
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path:'/',
+    name:'导航一',
+    component:App,
+    children:[
+      {
+        path:'/pageOne',
+        name:'页面1',
+        component:PageOne
+      },
+      {
+        path:'/pageTwo',
+        name:'页面2',
+        component:PageTwo
+      }
+    ]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },{
-    path:'/book',
-    component:Book
+   path:'/nav',
+   name:'导航二',
+   component:App,
+   children:[
+    {
+      path:'/pageThree',
+      name:'页面3',
+      component:PageThree
+    },
+    {
+      path:'/pageFour',
+      name:'页面4',
+      component:PageFour
+    }
+   ] 
   }
 ]
 
