@@ -9,6 +9,8 @@ import PageTwo from '../views/PageTwo'
 import PageThree from '../views/PageThree'
 import PageFour from '../views/PageFour'
 
+import Index from '../views/Index'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,7 +21,8 @@ const routes = [
   {
     path:'/',
     name:'导航一',
-    component:App,
+    component:Index,
+    redirect:'/pageOne',
     children:[
       {
         path:'/pageOne',
@@ -36,7 +39,7 @@ const routes = [
   {
    path:'/nav',
    name:'导航二',
-   component:App,
+   component:Index,
    children:[
     {
       path:'/pageThree',

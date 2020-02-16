@@ -1,15 +1,29 @@
 <template>
-  <div id="app">
-    <!-- <el-container style="height: 500px; border: 1px solid #eee">
+    <el-container style="height: 500px; border: 1px solid #eee">
 
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
 
-        <el-menu>
+    <!-- <el-menu :default-openeds="['1']" :default-active="'1-1'">
+
+          <el-submenu index="1">
+            <template slot="title">
+              <i class="el-icon-message"></i>导航一
+            </template>
+            <el-menu-item index="1-1">选项1</el-menu-item>
+            <el-menu-item index="1-2">选项2</el-menu-item>
+          </el-submenu>
+
+        </el-menu> -->
+
+        <el-menu router :default-openeds="['0']">
           <el-submenu v-for="(item, index) in $router.options.routes" v-bind:key="index" :index="index+''">
             <template slot="title">
               <i class="el-icon-message"></i>{{index}}-{{item.name}}
             </template>
-            <el-menu-item v-for="(item_chil, index_chil) in item.children" v-bind:key="index_chil" :index="index_chil+''">{{item_chil.name}}</el-menu-item>
+            <el-menu-item 
+                v-for="(item_chil, index_chil) in item.children" 
+                v-bind:key="index_chil" :index="item_chil.path" 
+                :class="$route.path==item_chil.path?'is-active':''">{{index_chil+'-'+index}}-{{item_chil.name}}</el-menu-item>
           </el-submenu>
         </el-menu>
 
@@ -33,36 +47,16 @@
         </el-main>
       </el-container>
 
-    </el-container> -->
-    
-    <router-view/>
-
-  </div>
+    </el-container>
 </template>
 
-<style>
-.el-header {
-  background-color: #b3c0d1;
-  color: #333;
-  line-height: 60px;
-}
-
-.el-aside {
-  color: #333;
-}
-</style>
 
 <script>
 export default {
-  data() {
-    const item = {
-      date: "2016-05-02",
-      name: "王小虎",
-      address: "上海市普陀区金沙江路 1518 弄"
-    };
-    return {
-      tableData: Array(20).fill(item)
-    };
-  }
-};
+    
+}
 </script>
+
+<style>
+
+</style>
