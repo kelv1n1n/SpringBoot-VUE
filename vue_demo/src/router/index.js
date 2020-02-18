@@ -4,8 +4,8 @@ import Home from '../views/Home.vue'
 import Book from '../views/Book.vue'
 
 import App from '../App'
-import PageOne from '../views/PageOne'
-import PageTwo from '../views/PageTwo'
+import BookManage from '../views/BookManage'
+import AddBook from '../views/AddBook'
 import PageThree from '../views/PageThree'
 import PageFour from '../views/PageFour'
 
@@ -20,39 +20,39 @@ const routes = [
   // },
   {
     path:'/',
-    name:'导航一',
+    name:'图书馆',
     component:Index,
-    redirect:'/pageOne',
+    redirect:'/bookManage',
     children:[
       {
-        path:'/pageOne',
-        name:'页面1',
-        component:PageOne
+        path:'/bookManage',
+        name:'查询图书',
+        component:BookManage
       },
       {
-        path:'/pageTwo',
-        name:'页面2',
-        component:PageTwo
+        path:'/addBook',
+        name:'添加图书',
+        component:AddBook
       }
     ]
   },
-  {
-   path:'/nav',
-   name:'导航二',
-   component:Index,
-   children:[
-    {
-      path:'/pageThree',
-      name:'页面3',
-      component:PageThree
-    },
-    {
-      path:'/pageFour',
-      name:'页面4',
-      component:PageFour
-    }
-   ] 
-  }
+  // {
+  //  path:'/nav',
+  //  name:'导航二',
+  //  component:Index,
+  //  children:[
+  //   {
+  //     path:'/pageThree',
+  //     name:'页面3',
+  //     component:PageThree
+  //   },
+  //   {
+  //     path:'/pageFour',
+  //     name:'页面4',
+  //     component:PageFour
+  //   }
+  //  ] 
+  // }
 ]
 
 const router = new VueRouter({
