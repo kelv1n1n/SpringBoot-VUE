@@ -16,7 +16,7 @@
         </el-menu> -->
 
         <el-menu router :default-openeds="['0']">
-          <el-submenu v-for="(item, index) in $router.options.routes" v-bind:key="index" :index="index+''">
+          <el-submenu v-if="item.show" v-for="(item, index) in $router.options.routes" v-bind:key="index" :index="index+''">
             <template slot="title">
               <i class="el-icon-message"></i>{{index}}-{{item.name}}
             </template>

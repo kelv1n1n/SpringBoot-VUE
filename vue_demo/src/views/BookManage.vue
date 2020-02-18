@@ -6,8 +6,8 @@
       <el-table-column prop="author" label="作者" width="120"></el-table-column>
       <el-table-column label="操作" width="100">
         <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small">修改</el-button>
-          <el-button type="text" size="small">删除</el-button>
+          <el-button @click="edit(scope.row)" type="text" size="small">修改</el-button>
+          <el-button @click="deleteBook(scope.row)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -24,8 +24,28 @@
 <script>
 export default {
   methods: {
-    handleClick(row) {
-      console.log(row);
+    deleteBook(row){
+      const _this = this
+      axios.delete('http://localhost:8090/book/delete/'+row.id).then(function(res){
+        _this.$alert('删除成功','ok',{
+          confirmButtonTest:'确定',
+          callback:action => {
+            // _this.$router.push('/BookManage')
+            window.location.reload();
+          }
+        })
+      })
+    },
+    edit(row) {
+      // console.log(row);
+      //  this.$router.push('/update');
+      // row.id
+      this.$router.push({
+        path:'/update',
+        query:{
+          id:row.id
+        }
+      })
     },
     pageChange(currentPage) {
       const _this = this;
@@ -64,7 +84,7 @@ export default {
   created() {
     const _this = this;
     axios.get("http://localhost:8090/book/findAll/0/4").then(function(res) {
-      console.log(res);
+      // console.log(res);
       _this.tableData = res.data.content;
       _this.pageSize = res.data.size;
       _this.total = res.data.totalElements;

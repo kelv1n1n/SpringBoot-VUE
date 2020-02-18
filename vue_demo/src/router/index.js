@@ -6,7 +6,7 @@ import Book from '../views/Book.vue'
 import App from '../App'
 import BookManage from '../views/BookManage'
 import AddBook from '../views/AddBook'
-import PageThree from '../views/PageThree'
+import BookUpdate from '../views/BookUpdate'
 import PageFour from '../views/PageFour'
 
 import Index from '../views/Index'
@@ -22,6 +22,7 @@ const routes = [
     path:'/',
     name:'图书馆',
     component:Index,
+    show:true,
     redirect:'/bookManage',
     children:[
       {
@@ -36,6 +37,12 @@ const routes = [
       }
     ]
   },
+  {
+    show:false,
+    path:'/update',
+    name:'更新',
+    component:BookUpdate
+  }
   // {
   //  path:'/nav',
   //  name:'导航二',
